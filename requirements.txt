@@ -1,7 +1,7 @@
 asgiref==3.2.3
 cffi==1.13.2
 cryptography==2.8
-Django==2.1.11
+Django==3.0
 mysqlclient==1.4.6
 pycparser==2.19
 PyMySQL==0.9.3
