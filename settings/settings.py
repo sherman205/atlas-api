@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'atlas',
-        'USER': os.getenv("MYSQl_USER"),
+        'USER': os.getenv("MYSQL_USER"),
         'PASSWORD': os.getenv("MYSQL_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '3306',
