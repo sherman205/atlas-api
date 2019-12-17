@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'allauth',
     'allauth.account',
-    'users'
+    'users',
+    'profiles'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
