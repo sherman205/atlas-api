@@ -8,7 +8,7 @@ class ProfileView(viewsets.ModelViewSet):
 
   def get_queryset(self):
     queryset = Profile.objects.all()
-    user_id = self.request.query_params.get('user_id')
-    if user_id:
-      queryset = queryset.filter(user_id=user_id)
+    city = self.request.query_params.get('city')
+    if city:
+      queryset = queryset.filter(city=city)
     return queryset
