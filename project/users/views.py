@@ -8,7 +8,10 @@ class CustomUserView(viewsets.ModelViewSet):
 
   def get_queryset(self):
     queryset = CustomUser.objects.all()
+    ID = self.request.query_params.get('id')
     username = self.request.query_params.get('username')
     if username:
       queryset = queryset.filter(username=username)
+    if ID:
+      queryset = queryset.filter(id=ID)
     return queryset
