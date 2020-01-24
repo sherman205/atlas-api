@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from profiles.models import Profile
 
 class CustomUser(AbstractUser):
-  profile = models.OneToOneField(Profile, unique=True, on_delete=models.CASCADE)
+  profile = models.OneToOneField(Profile, unique=True, on_delete=models.CASCADE, blank=True, null=True)
 
   @property
   def full_name(self):
