@@ -18,9 +18,9 @@ SECRET_KEY = 'd0i+p3c-wd%6+jxv!@q@hoogn6$(olh464!umnnzy!20o+7_g3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CORS_ORIGIN_WHITELIST = (
-    "http://localhost:3000"
-)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 
 # Application definition
 
@@ -135,7 +135,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
