@@ -19,7 +19,7 @@ Download MySQL Community Server: https://dev.mysql.com/downloads/mysql/
 Add mysql to your $PATH:
 ```
 echo 'export PATH="/usr/local/mysql/bin:$PATH"' >> ~/.bash_profile
-source .~/.bash_profile
+source ~/.bash_profile
 ```
 
 Connect to mysql through the command line:
@@ -42,4 +42,22 @@ Commit database changes:
 
 To run the Django development server:
 `python manage.py runserver`
+
+To create an admin superuser to use the /admin dashboard:
+`python manage.py createsuperuser`
+
+If you get an error about `mysqlclient 1.3.13 or newer is required; you have 0.9.3`, this is a bug, you need to edit this file:
+`env/lib/python3.7/site-packages/django/db/backends/mysql/base.py` and search for this block:
+
+```
+if version < (1, 3, 13):
+    raise ImproperlyConfigured('mysqlclient 1.3.13 or newer is required; you have %s.' % Database.__version__)
+```
+and make it look like this:
+
+```
+if version < (1, 3, 13):
+    pass
+    # raise ImproperlyConfigured('mysqlclient 1.3.13 or newer is required; you have %s.' % Database.__version__)
+```
 
