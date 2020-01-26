@@ -22,9 +22,9 @@ echo 'export PATH="/usr/local/mysql/bin:$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
-Connect to mysql through the command line:
+Connect to mysql through the command line (prompted for password):
 ```
-mysql -u <user> -p
+mysql -u<user> -p
 ```
 
 Add a `.env` file under `/project/project` with the database env vars `MYSQL_USER` and `MYSQL_PASSWORD`
