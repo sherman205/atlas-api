@@ -3,11 +3,11 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import CustomUserSerializer
+from .serializers import CustomUserGetSerializer, CustomUserPutSerializer
 from .models import CustomUser
 
 class CustomUserView(viewsets.ModelViewSet):
-  serializer_class = CustomUserSerializer
+  serializer_class = CustomUserGetSerializer
 
   def get_queryset(self):
     queryset = CustomUser.objects.all()
@@ -27,10 +27,10 @@ def user_detail(request, pk):
     return Response(status=status.HTTP_404_NOT_FOUND)
 
   if request.method == 'GET':
-    serializer = CustomUserSerializer(user)
+    serializer = CustomUserGetSerializer(user)
     return Response(serializer.data)
   elif request.method == 'PUT':
-    serializer = CustomUserSerializer(user, data=request.data)
+    serializer = CustomUserPutSerializer(user, data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)

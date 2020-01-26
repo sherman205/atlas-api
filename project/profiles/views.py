@@ -4,7 +4,7 @@ from rest_framework import status
 from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import ProfileGetSerializer, ProfilePutSerializer
-from users.serializers import CustomUserSerializer, CustomUserPutSerializer
+from users.serializers import CustomUserGetSerializer, CustomUserPutSerializer
 from .models import Profile
 from users.models import CustomUser
 

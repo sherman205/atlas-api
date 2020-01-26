@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from .models import Profile
-from users.serializers import CustomUserSerializer
+from users.serializers import CustomUserGetSerializer
 
 class ProfileGetSerializer(serializers.ModelSerializer):
-  customuser = CustomUserSerializer()
+  customuser = CustomUserGetSerializer()
 
   class Meta:
     model = Profile

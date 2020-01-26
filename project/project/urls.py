@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('api/v1/', include(router.urls)),
+    # path('api/v1/', include(router.urls)),
     url(r'^api/v1/profiles/(?P<pk>[0-9]+)/$', profiles_views.profile_detail),
     url(r'^api/v1/profiles/create/$', profiles_views.create_profile),
     url(r'^api/v1/users/(?P<pk>[0-9]+)/$', users_views.user_detail)
