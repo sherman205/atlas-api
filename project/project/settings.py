@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'users',
-    'profiles'
+    'profiles',
+    'pins',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
