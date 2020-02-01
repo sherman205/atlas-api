@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Pin
 
 class PinSerializer(serializers.ModelSerializer):
+  user_id = serializers.IntegerField(required=True)
 
   class Meta:
     model = Pin

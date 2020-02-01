@@ -14,3 +14,11 @@ def pins(request, user):
   if request.method == 'GET':
     serializer = PinSerializer(pins, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def add_pin(request):
+  serializer = PinSerializer(data=request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(status=status.HTTP_201_CREATED)
+  return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

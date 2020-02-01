@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^api/v1/profiles/(?P<pk>[0-9]+)/$', profiles_views.profile_detail),
     url(r'^api/v1/profiles/create/$', profiles_views.create_profile),
     url(r'^api/v1/users/(?P<pk>[0-9]+)/$', users_views.user_detail),
-    url(r'^api/v1/pins/([0-9]+)/$', pins_views.pins)
+    url(r'^api/v1/pins/([0-9]+)/$', pins_views.pins),
+    url(r'^api/v1/pins/add/$', pins_views.add_pin),
 ]
