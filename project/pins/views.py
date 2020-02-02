@@ -7,11 +7,25 @@ from .serializers import PinSerializer
 @api_view(['GET', 'PUT'])
 def pins(request, user):
   try:
-    pins = Pin.objects.filter(user=user)
+    pins = Pin.objects.filter(user=user).order_by('date')
   except Pin.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
 
   if request.method == 'GET':
+    date = request.query_params.get('date')
+    date_start = request.query_params.get('date_start')
+    date_end = request.query_params.get('date_end')
+    sort = request.query_params.get('sort')
+    # either filter by a specific date or a range of dates
+    if date:
+      pins = pins.filter(date=date)
+    elif date_start and date_end:
+      pins = pins.filter(date__range=[date_start, date_end])
+
+    if sort == 'DESC':
+      pins = pins.order_by('-date')
+    else:
+      pins = pins.order_by('date')
     serializer = PinSerializer(pins, many=True)
     return Response(serializer.data)
 
