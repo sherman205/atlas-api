@@ -21,6 +21,7 @@ class ProfileView(viewsets.ModelViewSet):
       queryset = queryset.filter(id=ID)
     return queryset
 
+
 @api_view(['GET', 'PUT'])
 def profile_detail(request, pk):
   try:

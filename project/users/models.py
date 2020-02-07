@@ -10,5 +10,9 @@ class CustomUser(AbstractUser):
       "Returns the person's full name."
       return '%s %s' % (self.first_name, self.last_name)
 
+  @classmethod
+  def get_profile_by_user(cls, user_id):
+    return cls.objects.get(pk=user_id).profile_id
+
   class Meta:
     db_table = 'user'

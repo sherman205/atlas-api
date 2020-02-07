@@ -61,3 +61,5 @@ if version < (1, 3, 13):
     # raise ImproperlyConfigured('mysqlclient 1.3.13 or newer is required; you have %s.' % Database.__version__)
 ```
 
+To use the interactive python shell: `python manage.py shell` in order to import all the SETTINGS you need.
+

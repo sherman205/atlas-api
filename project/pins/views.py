@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from .models import Pin
 from .serializers import PinSerializer
+from profiles.models import Profile
+from users.models import CustomUser
 
 @api_view(['GET'])
 def pins(request, user):
@@ -33,8 +35,15 @@ def pins(request, user):
 def add_pin(request):
   serializer = PinSerializer(data=request.data)
   if serializer.is_valid():
-    serializer.save()
     user_id = request.data["user_id"]
+    reputation_level = Pin.get_reputation_level(user_id)
+    profile_id = CustomUser.get_profile_by_user(user_id)
+    profile = Profile.objects.get(pk=profile_id)
+    if profile:
+      rep = getattr(profile, 'reputation_level')
+      setattr(profile, 'reputation_level', reputation_level)
+      profile.save()
+    serializer.save()
     pins = Pin.objects.filter(user=user_id)
     serializer = PinSerializer(pins, many=True)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
