@@ -40,7 +40,6 @@ def add_pin(request):
     profile_id = CustomUser.get_profile_by_user(user_id)
     profile = Profile.objects.get(pk=profile_id)
     if profile:
-      rep = getattr(profile, 'reputation_level')
       setattr(profile, 'reputation_level', reputation_level)
       profile.save()
     serializer.save()
@@ -48,3 +47,14 @@ def add_pin(request):
     serializer = PinSerializer(pins, many=True)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def delete_pin(request, pk):
+  try:
+    pin = Pin.objects.get(pk=pk)
+  except Pin.DoesNotExist:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'DELETE':
+    pin.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)

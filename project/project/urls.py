@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^api/v1/users/(?P<pk>[0-9]+)/$', users_views.user_detail),
     url(r'^api/v1/pins/([0-9]+)/$', pins_views.pins),
     url(r'^api/v1/pins/add/$', pins_views.add_pin),
+    url(r'^api/v1/pins/delete/(?P<pk>[0-9]+)/$', pins_views.delete_pin),
 ]
