@@ -16,7 +16,7 @@ class Pin(models.Model):
   longitude = models.DecimalField(max_digits=22, decimal_places=16, blank=True, null=True)
   user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
   city = models.CharField(max_length=128)
-  state = models.CharField(max_length=2, blank=True, null=True)
+  state = models.CharField(max_length=50, blank=True, null=True)
   country = models.CharField(max_length=128)
 
   @classmethod
