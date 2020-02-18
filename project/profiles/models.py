@@ -8,7 +8,7 @@ class Profile(models.Model):
   state = models.CharField(max_length=2, blank=True, null=True)
   country = models.CharField(max_length=128)
   reputation_level = models.CharField(max_length=50, default='Novice')
-  # profile_pic = models.ImageField()
+  profile_pic = models.FileField(upload_to='media', blank=True)
 
   class Meta:
     db_table = 'profile'

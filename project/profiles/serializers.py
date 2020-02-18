@@ -7,7 +7,7 @@ class ProfileGetSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Profile
-    fields = ('id', 'city', 'state', 'country', 'reputation_level', 'customuser')
+    fields = ('id', 'city', 'state', 'country', 'reputation_level', 'customuser', 'profile_pic')
 
   def to_representation(self, instance):
     data = super().to_representation(instance)
