@@ -57,4 +57,6 @@ def delete_pin(request, pk):
 
   if request.method == 'DELETE':
     pin.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    pins = Pin.objects.filter(user=pin.user_id)
+    serializer = PinSerializer(pins, many=True)
+    return Response(serializer.data)
