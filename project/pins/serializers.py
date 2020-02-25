@@ -6,4 +6,4 @@ class PinSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Pin
-    fields = ('id', 'date', 'latitude', 'longitude', 'city', 'state', 'country', 'user_id')
+    fields = ('id', 'date', 'latitude', 'longitude', 'city', 'state', 'country', 'user_id', 'map_search_text')

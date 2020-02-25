@@ -22,7 +22,7 @@ class ProfilePutSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Profile
-    fields = ('id', 'city', 'state', 'country', 'reputation_level')
+    fields = ('id', 'city', 'state', 'country', 'reputation_level', 'profile_pic')
 
   def update(self, instance, validated_data):
     validated_data.pop('reputation_level', None)  # prevent reputation_level from being updated
